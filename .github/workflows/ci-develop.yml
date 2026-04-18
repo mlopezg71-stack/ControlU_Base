@@ -1,0 +1,28 @@
+name: CI Develop - Marcous Lopez
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restaurar dependencias del proyecto
+        run: dotnet restore test1.sln
+
+      - name: Compilar solución
+        run: dotnet build test1.sln --no-restore --configuration Release
+
+      - name: Ejecutar pruebas automatizadas
+        run: dotnet test test1.sln --no-build --configuration Release
