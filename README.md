@@ -1,2 +1,2 @@
-# ControlU_Base
+# Prueba de cambio para el laboratorio de GitHub Actions.
 
